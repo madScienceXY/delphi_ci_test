@@ -3,10 +3,10 @@
         <ProjectGuid>{907495CD-896A-4ABE-BA51-984142CAF9B5}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="DUnits.dproj">
+        <Projects Include="Test\DUnitsTests.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Test\DUnitsTests.dproj">
+        <Projects Include="DUnits.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,15 +17,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="DUnits">
-        <MSBuild Projects="DUnits.dproj"/>
-    </Target>
-    <Target Name="DUnits:Clean">
-        <MSBuild Projects="DUnits.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="DUnits:Make">
-        <MSBuild Projects="DUnits.dproj" Targets="Make"/>
-    </Target>
     <Target Name="DUnitsTests">
         <MSBuild Projects="Test\DUnitsTests.dproj"/>
     </Target>
@@ -35,14 +26,23 @@
     <Target Name="DUnitsTests:Make">
         <MSBuild Projects="Test\DUnitsTests.dproj" Targets="Make"/>
     </Target>
+    <Target Name="DUnits">
+        <MSBuild Projects="DUnits.dproj"/>
+    </Target>
+    <Target Name="DUnits:Clean">
+        <MSBuild Projects="DUnits.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DUnits:Make">
+        <MSBuild Projects="DUnits.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="DUnits;DUnitsTests"/>
+        <CallTarget Targets="DUnitsTests;DUnits"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="DUnits:Clean;DUnitsTests:Clean"/>
+        <CallTarget Targets="DUnitsTests:Clean;DUnits:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="DUnits:Make;DUnitsTests:Make"/>
+        <CallTarget Targets="DUnitsTests:Make;DUnits:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -1,18 +1,15 @@
 program DUnits;
 
-{$APPTYPE CONSOLE}
+uses
+  Vcl.Forms,
+  CalcUnit in 'CalcUnit.pas',
+  CalcForm in 'CalcForm.pas' {Form1};
 
 {$R *.res}
 
-uses
-  System.SysUtils,
-  CalcUnit in 'CalcUnit.pas';
-
 begin
-  try
-    { TODO -oUser -cConsole Main : Insert code here }
-  except
-    on E: Exception do
-      Writeln(E.ClassName, ': ', E.Message);
-  end;
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
 end.
