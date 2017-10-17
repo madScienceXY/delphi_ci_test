@@ -16,7 +16,10 @@ program DUnitsTests;
 
 uses
   DUnitTestRunner,
-  TestCalcUnit in 'TestCalcUnit.pas';
+  TestCalcUnit in 'TestCalcUnit.pas',
+  CalcUnit in '..\CalcUnit.pas';
+
+{$R *.RES}
 
 begin
   DUnitTestRunner.RunRegisteredTests;

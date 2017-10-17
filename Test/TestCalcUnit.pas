@@ -26,12 +26,13 @@ type
   published
     procedure TestAdd;
     procedure TestSub;
+    [Test]
+    [TestCase('TestA', '1,2,3')]
+    [TestCase('TestB', '3,4,7')]
+    procedure TestAdd2(const A: Integer; const B: Integer; const Result: Integer);
   end;
 
 implementation
-
-uses
-  SysUtils;
 
 procedure TestTCalc.SetUp;
 begin
@@ -50,10 +51,17 @@ var
   y: Integer;
   x: Integer;
 begin
-  x := 3;
-  y := 4;
+  // TODO: Setup method call parameters
   ReturnValue := FCalc.Add(x, y);
-  CheckEquals(7, ReturnValue);
+  // TODO: Validate method results
+end;
+
+procedure TestTCalc.TestAdd2(const A, B, Result: Integer);
+var
+  V: Integer;
+begin
+  V := FCalc.Add(A,B);
+  CheckEquals(Result, V, 'Values match');
 end;
 
 procedure TestTCalc.TestSub;
@@ -62,11 +70,9 @@ var
   y: Integer;
   x: Integer;
 begin
-  x := 8;
-  y := 5;
+  // TODO: Setup method call parameters
   ReturnValue := FCalc.Sub(x, y);
-  CheckEquals(3, ReturnValue, 'Values match ' + IntToStr(ReturnValue));
-  CheckNotEquals(5, ReturnValue, 'Values dont match ' + IntToStr(ReturnValue));
+  // TODO: Validate method results
 end;
 
 initialization
