@@ -71,6 +71,10 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_ExeOutput>.\out\bin</DCC_ExeOutput>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_DcuOutput>.\out\lib\$(Platform)\$(Config)</DCC_DcuOutput>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -108,6 +112,13 @@
                 <Source>
                     <Source Name="MainSource">DUnits.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclBindCompFireDAC210.bpl">LiveBinding Expression Components FireDac</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k210.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp210.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files\FastReports\FastReport 5\LibD21\dclfsbde21.bpl">File C:\Program Files\FastReports\FastReport 5\LibD21\dclfsbde21.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files\FastReports\FastReport 5\LibD21\dclfrxbde21.bpl">File C:\Program Files\FastReports\FastReport 5\LibD21\dclfrxbde21.bpl not found</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment>
                 <DeployFile LocalName="Win32\Debug\DUnits.exe" Configuration="Debug" Class="ProjectOutput">
